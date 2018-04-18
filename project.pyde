@@ -3,7 +3,7 @@ BUFFER_SIZE = 100
 MIN_LENGTH, MAX_LENGTH = 50, 90
 X_SIZE, Y_SIZE = 1100, 450
 
-#DIRECTION = true #true = up, false = down
+DRAW_UPWARDS = True #true = Tree is drawn from bottom up, false = vice versa
 
 class Node:
     def __init__(self, x, y):
@@ -43,18 +43,22 @@ def draw_nodes(node):
 
 add_library('pdf')
 def setup():
-    size(X_SIZE, Y_SIZE)
+    global head_node
+    size(X_SIZE, Y_SIZE)    
+    if DRAW_UPWARDS:
+        head_node = gen_nodes(X_SIZE/2, Y_SIZE-50)  
     strokeWeight(2)
     #colorMode(HSB, y_size_, 100, 100)
     background(0, 0, 55)
 
 def draw():
-    pass
+    background(0, 0, 55)
+    draw_nodes(head_node)
 
 
 def mousePressed():
+    global head_node
     beginRecord(PDF, "tree.pdf")
     background(0, 0, 55)
-    draw_nodes(gen_nodes(X_SIZE/2, Y_SIZE-50))
-    
+    head_node = gen_nodes(X_SIZE/2, Y_SIZE-50)
     endRecord()
