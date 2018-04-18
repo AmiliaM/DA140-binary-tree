@@ -61,4 +61,5 @@ def mousePressed():
     beginRecord(PDF, "tree.pdf")
     background(0, 0, 55)
     head_node = gen_nodes(X_SIZE/2, Y_SIZE-50)
+    draw_nodes(head_node)
     endRecord()
