@@ -4,5 +4,10 @@ A project for my DA140 class to draw a binary tree, both in a printable version 
 
 Currently, on launch, a tree is generated, and another tree can be generated on mouse press. 
 
-<img align="center" width="1100" height="450"
-     title="Tree" src="./tree.pdf">
+<p align="center">
+  <img src="./tree.pdf" alt="Tree"
+       width="654" height="450">
+</p>
+
+
+Written in python mode for processing
