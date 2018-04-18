@@ -18,7 +18,7 @@ def gen_nodes(x, y):
     n = Node(x, y)
     if y > BUFFER_SIZE: #checks if node is too close to the top of the window to generate children
         for i in range(0, CHILDREN_PER_NODE):
-            angle_ = random(180, 360)
+            angle_ = (random(180, 360)*.5) + (map(noise(x), 0, 1, 180, 360)*.5)
             length_ = random(MIN_LENGTH, MAX_LENGTH)
             y_len = length_*sin(radians(angle_))
             x_len = length_*cos(radians(angle_))
