@@ -26,17 +26,16 @@ def gen_nodes(x, y):
             n.add_child(o)
     return n
     
-def draw_nodes(node):
+def draw_nodes(node, left_shift):
     x, y = node.x, node.y
     i = 0
     for child in node.children:
-        child_x, child_y = child.x, child.y
         if i:
             stroke(100, map(y, 0, Y_SIZE, 0, 255), 100)
         else:
             stroke(map(y, 0, Y_SIZE, 0, 255), 100, 100)
         line(x, y, child.x, child.y)
-        draw_nodes(child)  
+        draw_nodes(child, left_shift)  
         i = (i + 1)%2 #i alternates between 1 and 0
 
 
@@ -50,10 +49,13 @@ def setup():
     strokeWeight(2)
     #colorMode(HSB, y_size_, 100, 100)
 
-
+i = 0; #I am sorry about jank - processing is...
 def draw():
+    global i
     background(0, 0, 55)
-    draw_nodes(head_node)
+    draw_nodes(head_node, i)
+    i+=1
+    if i > X_SIZE: i = 0
 
 
 def mousePressed():
@@ -61,5 +63,5 @@ def mousePressed():
     beginRecord(PDF, "tree.pdf")
     background(0, 0, 55)
     head_node = gen_nodes(X_SIZE/2, Y_SIZE-50)
-    draw_nodes(head_node)
+    draw_nodes(head_node, 0)
     endRecord()
