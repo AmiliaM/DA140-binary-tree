@@ -22,7 +22,7 @@ def gen_nodes(x, y):
             length_ = random(MIN_LENGTH, MAX_LENGTH)
             y_len = length_*sin(radians(angle_))
             x_len = length_*cos(radians(angle_))
-            o = gen_nodes(x + x_len, y + y_len) #Generates the current child's children .. Recursion!
+            o = gen_nodes(x + x_len, y + y_len) 
             n.add_child(o)
     return n
     
@@ -47,9 +47,8 @@ def setup():
     if DRAW_UPWARDS:
         head_node = gen_nodes(X_SIZE/2, Y_SIZE-50)  
     strokeWeight(2)
-    #colorMode(HSB, y_size_, 100, 100)
 
-i = 0; #I am sorry about jank - processing is...
+i = 0; 
 def draw():
     global i
     background(0, 0, 55)
